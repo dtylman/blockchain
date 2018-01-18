@@ -6,5 +6,5 @@ add_definitions("-std=c++11")
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-add_executable(blockchain timer.cpp)
+add_executable(blockchain main.cpp)
 target_link_libraries(blockchain ${CONAN_LIBS})
