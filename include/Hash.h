@@ -16,23 +16,23 @@
  */
 
 /* 
- * File:   BlockChainApp.h
+ * File:   Hash.h
  * Author: danny
  *
- * Created on January 21, 2018, 10:58 AM
+ * Created on January 21, 2018, 3:51 PM
  */
 
-#ifndef BLOCKCHAINAPP_H
-#define BLOCKCHAINAPP_H
+#ifndef HASH_H
+#define HASH_H
 
-#include "Poco/Util/ServerApplication.h"
+#include <string> 
 
-class BlockChainApp : public Poco::Util::ServerApplication {
-protected:
+namespace BlockChain {
 
-    virtual int main(const std::vector<std::string> &args);
-};
-
-
-#endif /* BLOCKCHAINAPP_H */
+    class Hash {
+    public:
+        static std::string digest(const std::string& data);
+    };
+}
+#endif /* HASH_H */
 

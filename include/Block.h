@@ -8,15 +8,29 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-namespace BlockChain{
-class Block {
-public:
-    Block();
-    Block(const Block& orig);
-    virtual ~Block();
-private:
+#include <string>
 
-};
+#include "Proof.h"
+#include "Record.h"
+
+namespace BlockChain {
+
+    class Block {
+    public:
+        Block(int index, const Proof& proof, std::string previous_hash);
+        virtual ~Block();        
+        
+        int index() const;
+        const std::string& prevHash() const;
+        
+        const Record& record() const;
+    private:
+        int _index;
+        uint64_t _timestamp;
+        Proof _proof;
+        Record _record;
+        std::string _previous_hash;
+    };
 
 }
 #endif /* BLOCK_H */

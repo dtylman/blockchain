@@ -23,6 +23,11 @@
       <df name="include">
         <in>Block.h</in>
         <in>Chain.h</in>
+        <in>HandlerFactory.h</in>
+        <in>Hash.h</in>
+        <in>Node.h</in>
+        <in>Proof.h</in>
+        <in>Record.h</in>
       </df>
       <df name="lib">
       </df>
@@ -39,6 +44,11 @@
         </df>
         <in>Block.cpp</in>
         <in>Chain.cpp</in>
+        <in>HandlerFactory.cpp</in>
+        <in>Hash.cpp</in>
+        <in>Node.cpp</in>
+        <in>Proof.cpp</in>
+        <in>Record.cpp</in>
       </df>
       <in>BlockChainApp.cpp</in>
       <in>BlockChainApp.h</in>
@@ -69,6 +79,8 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>

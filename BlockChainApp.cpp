@@ -23,14 +23,18 @@
  */
 
 #include "BlockChainApp.h"
-#include "Block.h"
+#include "Chain.h"
+#include "Poco/Net/HTTPServer.h"
+#include "HandlerFactory.h"
 #include <iostream>
 
 int BlockChainApp::main(const std::vector<std::string>& args) {
-        std::cout << "Hello, POCO C++ Libraries!" << std::endl;
-        BlockChain::Block block;
-        return EXIT_OK;
-    }
+    Poco::Net::HTTPServer server(new BlockChain::HandlerFactory(), 5080);
+    server.start();
+    logger().information("Server started...");
+    waitForTerminationRequest();
+    server.stopAll(true);
+    return EXIT_OK;
+}
 
-
-POCO_APP_MAIN(BlockChainApp);
+POCO_SERVER_MAIN(BlockChainApp);

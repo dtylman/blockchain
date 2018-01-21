@@ -2,9 +2,21 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
+      <df name="include">
+        <in>HandlerFactory.h</in>
+        <in>Hash.h</in>
+        <in>Node.h</in>
+        <in>Proof.h</in>
+        <in>Record.h</in>
+      </df>
       <df name="src">
         <in>Block.cpp</in>
         <in>Chain.cpp</in>
+        <in>HandlerFactory.cpp</in>
+        <in>Hash.cpp</in>
+        <in>Node.cpp</in>
+        <in>Proof.cpp</in>
+        <in>Record.cpp</in>
       </df>
       <in>BlockChainApp.cpp</in>
     </df>
@@ -62,6 +74,16 @@
         <ccTool flags="0">
         </ccTool>
       </item>
+      <item path="include/HandlerFactory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Hash.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Node.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Proof.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Record.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Block.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
         </ccTool>
@@ -69,6 +91,16 @@
       <item path="src/Chain.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
         </ccTool>
+      </item>
+      <item path="src/HandlerFactory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Hash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Proof.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Record.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -8,14 +8,29 @@
 #ifndef CHAIN_H
 #define CHAIN_H
 
+#include "Block.h"
+#include "Record.h"
+#include "Node.h"
+
+#include <vector>
+
 namespace BlockChain {
+        
 class Chain {
 public:
-    Chain();
-    Chain(const Chain& orig);
+    typedef std::vector<Block> List;
+    
+    Chain();    
     virtual ~Chain();
+    
+    const Block& newBlock(const Record& record);    
+    
+    bool validate() const;
+protected:
+    bool validateProof(const Proof& lastProof, const Proof& proof) const;
 private:
-
+    List _chain;
+    Node::List _nodes;
 };
 
 }

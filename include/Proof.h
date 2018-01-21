@@ -16,23 +16,29 @@
  */
 
 /* 
- * File:   BlockChainApp.h
+ * File:   Proof.h
  * Author: danny
  *
- * Created on January 21, 2018, 10:58 AM
+ * Created on January 21, 2018, 12:57 PM
  */
 
-#ifndef BLOCKCHAINAPP_H
-#define BLOCKCHAINAPP_H
+#ifndef PROOF_H
+#define PROOF_H
 
-#include "Poco/Util/ServerApplication.h"
+namespace BlockChain {
 
-class BlockChainApp : public Poco::Util::ServerApplication {
-protected:
-
-    virtual int main(const std::vector<std::string> &args);
-};
-
-
-#endif /* BLOCKCHAINAPP_H */
+    class Proof {
+    public:
+        Proof(int num);
+        virtual ~Proof();
+              
+        static Proof Mine(const Proof& prevProof);
+        
+        bool valid(const Proof& prevProof);
+        void operator++(int);        
+    private:
+        int _num;
+    };
+}
+#endif /* PROOF_H */
 

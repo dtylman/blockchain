@@ -7,16 +7,38 @@
 
 #include "Chain.h"
 
-namespace BlockChain {
+using namespace BlockChain;
 
-    Chain::Chain() {
+Chain::Chain() {
+    newBlock(Proof(1), "1");
+}
+
+Chain::~Chain() {
+}
+
+bool Chain::validate() const {
+    if (_chain.empty()) {
+        return true;
     }
+    auto iter = _chain.end();
+    while (iter != _chain.begin()) {
+        const Block& nextBlock = *iter;
+        iter--;
+        if (iter->record().hash() != nextBlock.prevHash()) {
+            return false;
+        }
+        
+        
+        /*
+          # Check that the Proof of Work is correct
+        if not self.valid_proof(last_block['proof'], block['proof']):
+        return False*/
 
-    Chain::Chain(const Chain& orig) {
     }
+    return true;
+}
 
-    Chain::~Chain() {
-    }
-
-
+bool Chain::validateProof(const Proof& lastProof, const Proof& proof) const {
+    ///?
+    return true;
 }

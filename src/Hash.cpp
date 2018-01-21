@@ -16,23 +16,24 @@
  */
 
 /* 
- * File:   BlockChainApp.h
+ * File:   Hash.cpp
  * Author: danny
- *
- * Created on January 21, 2018, 10:58 AM
+ * 
+ * Created on January 21, 2018, 3:51 PM
  */
 
-#ifndef BLOCKCHAINAPP_H
-#define BLOCKCHAINAPP_H
+#include "Hash.h"
+#include "Poco/HMACEngine.h"
+#include "Poco/SHA1Engine.h"
 
-#include "Poco/Util/ServerApplication.h"
+using namespace BlockChain;
+using Poco::HMACEngine;
+using Poco::SHA1Engine;
 
-class BlockChainApp : public Poco::Util::ServerApplication {
-protected:
+#define PASSPHRASE "secret"
 
-    virtual int main(const std::vector<std::string> &args);
-};
-
-
-#endif /* BLOCKCHAINAPP_H */
-
+std::string Hash::digest(const std::string& data) {
+    HMACEngine<SHA1Engine> hmac(PASSPHRASE);    
+    hmac.update(data);
+    return hmac.digestToHex(hmac.digest());
+}

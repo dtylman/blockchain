@@ -16,23 +16,27 @@
  */
 
 /* 
- * File:   BlockChainApp.h
+ * File:   Node.h
  * Author: danny
  *
- * Created on January 21, 2018, 10:58 AM
+ * Created on January 21, 2018, 1:55 PM
  */
 
-#ifndef BLOCKCHAINAPP_H
-#define BLOCKCHAINAPP_H
+#ifndef NODE_H
+#define NODE_H
 
-#include "Poco/Util/ServerApplication.h"
+#include <vector>
 
-class BlockChainApp : public Poco::Util::ServerApplication {
-protected:
+namespace BlockChain{
+class Node {
+public:
+    typedef std::vector<Node> List;
+    Node();    
+    virtual ~Node();
+private:
 
-    virtual int main(const std::vector<std::string> &args);
 };
+}
 
-
-#endif /* BLOCKCHAINAPP_H */
+#endif /* NODE_H */
 

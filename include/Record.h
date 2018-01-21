@@ -16,23 +16,32 @@
  */
 
 /* 
- * File:   BlockChainApp.h
+ * File:   Record.h
  * Author: danny
  *
- * Created on January 21, 2018, 10:58 AM
+ * Created on January 21, 2018, 1:50 PM
  */
 
-#ifndef BLOCKCHAINAPP_H
-#define BLOCKCHAINAPP_H
+#ifndef RECORD_H
+#define RECORD_H
 
-#include "Poco/Util/ServerApplication.h"
+#include <vector>
+#include <string>
+#include "Poco/Types.h"
 
-class BlockChainApp : public Poco::Util::ServerApplication {
-protected:
+namespace BlockChain {
 
-    virtual int main(const std::vector<std::string> &args);
-};
+    class Record {        
+    public:         
+        Record();
+        virtual ~Record();        
+        const std::string& hash() const;
+        void append(const std::string& data);
+    private:
+        std::string _hash;
+        std::string _data;
+    };
+}
 
-
-#endif /* BLOCKCHAINAPP_H */
+#endif /* RECORD_H */
 
