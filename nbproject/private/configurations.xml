@@ -20,7 +20,28 @@
         <in>feature_tests.c</in>
         <in>feature_tests.cxx</in>
       </df>
-      <in>main.cpp</in>
+      <df name="include">
+        <in>Block.h</in>
+        <in>Chain.h</in>
+      </df>
+      <df name="lib">
+      </df>
+      <df name="samples">
+      </df>
+      <df name="src">
+        <df name="CMakeFiles">
+          <df name="BCLIB.dir">
+          </df>
+          <df name="bclib.dir">
+          </df>
+          <df name="src.dir">
+          </df>
+        </df>
+        <in>Block.cpp</in>
+        <in>Chain.cpp</in>
+      </df>
+      <in>BlockChainApp.cpp</in>
+      <in>BlockChainApp.h</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
