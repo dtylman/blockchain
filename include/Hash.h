@@ -25,13 +25,22 @@
 #ifndef HASH_H
 #define HASH_H
 
+#include "Poco/HMACEngine.h"
+#include "Poco/SHA1Engine.h"
+
 #include <string> 
 
 namespace BlockChain {
 
     class Hash {
     public:
-        static std::string digest(const std::string& data);
+        Hash();
+        const std::string& digest(const std::string& data);
+        
+        bool endsWith(const std::string& suffix) const;
+    private:
+        Poco::HMACEngine<Poco::SHA1Engine> _engine;
+        std::string _hash;
     };
 }
 #endif /* HASH_H */

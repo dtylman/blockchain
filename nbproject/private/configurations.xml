@@ -35,9 +35,9 @@
       </df>
       <df name="src">
         <df name="CMakeFiles">
-          <df name="BCLIB.dir">
-          </df>
           <df name="bclib.dir">
+          </df>
+          <df name="BCLIB.dir">
           </df>
           <df name="src.dir">
           </df>

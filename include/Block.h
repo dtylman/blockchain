@@ -8,16 +8,21 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include <string>
+
 
 #include "Proof.h"
 #include "Record.h"
+
+#include "Poco/Timestamp.h"
+#include "Poco/Types.h"
+
+#include <string>
 
 namespace BlockChain {
 
     class Block {
     public:
-        Block(int index, const Proof& proof, std::string previous_hash);
+        Block(Poco::UInt32 index, const Proof& proof, const Record& record, std::string previous_hash);
         virtual ~Block();        
         
         int index() const;
@@ -25,8 +30,8 @@ namespace BlockChain {
         
         const Record& record() const;
     private:
-        int _index;
-        uint64_t _timestamp;
+        Poco::UInt32 _index;
+        Poco::Timestamp _timestamp;
         Proof _proof;
         Record _record;
         std::string _previous_hash;

@@ -10,10 +10,11 @@
 
 using namespace BlockChain;
 
-Block::Block(int index, const Proof& proof, std::string previous_hash) :
-_index(index), _proof(proof), _previous_hash(previous_hash) {
-    _timestamp = Poco::Timestamp().epochMicroseconds();
+Block::Block(Poco::UInt32 index, const Proof& proof, const Record& record, std::string previous_hash) : _index(index),
+_proof(proof),_record(record), _previous_hash(previous_hash) {
+
 }
+
 
 Block::~Block() {
 }

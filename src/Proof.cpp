@@ -25,30 +25,42 @@
 #include "Proof.h"
 #include "Poco/HMACEngine.h"
 #include "Poco/SHA1Engine.h"
+#include "Poco/RandomStream.h"
+
+#include "Hash.h"
 
 using namespace BlockChain;
 
-Proof::Proof(int num) : _num(num){
+#define HASH_SUFFIX "00"
+#define VALUE_SIZE 100
 
+Proof::Proof() {
+    rotate();
 }
-
 
 Proof::~Proof() {
 }
 
-Proof Proof::Mine(const Proof& prevProof) {
-    Proof p(0);
-    while (!p.valid(prevProof)){
-        p++;
+bool Proof::valid(const Proof& prevProof) {
+    Hash h;
+    h.digest(_value + prevProof._value);
+    return h.endsWith(HASH_SUFFIX);
+}
+
+void Proof::rotate() {
+    Poco::RandomInputStream ris;
+    char v[VALUE_SIZE];
+    ris.read(v, VALUE_SIZE);
+    _value.assign(v, VALUE_SIZE);
+}
+
+Proof Proof::findNext() const {
+    Proof p;
+    Hash h;
+    h.digest(p._value + _value);
+    while (!h.endsWith(HASH_SUFFIX)) {
+        p.rotate();
+        h.digest(p._value + _value);
     }
     return p;
 }
-
-bool Proof::valid(const Proof& prevProof) {
-    
-}
-
-void Proof::operator++(int) {
-    _num++;
-}
-

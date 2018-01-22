@@ -39,5 +39,5 @@ const std::string& Record::hash() const {
 
 void Record::append(const std::string& data) {
     _data.append(data);
-    _hash = Hash::digest(_data);
+    _hash = Hash().digest(_data);
 }

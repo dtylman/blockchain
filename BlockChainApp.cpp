@@ -26,9 +26,12 @@
 #include "Chain.h"
 #include "Poco/Net/HTTPServer.h"
 #include "HandlerFactory.h"
+#include "Proof.h"
 #include <iostream>
 
 int BlockChainApp::main(const std::vector<std::string>& args) {
+    BlockChain::Proof p;
+    p.findNext();
     Poco::Net::HTTPServer server(new BlockChain::HandlerFactory(), 5080);
     server.start();
     logger().information("Server started...");

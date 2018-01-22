@@ -25,19 +25,22 @@
 #ifndef PROOF_H
 #define PROOF_H
 
+#include <string>
+
 namespace BlockChain {
 
     class Proof {
-    public:
-        Proof(int num);
+    public:                
+        Proof();
         virtual ~Proof();
-              
-        static Proof Mine(const Proof& prevProof);
-        
+                      
         bool valid(const Proof& prevProof);
-        void operator++(int);        
+        
+        Proof findNext() const;
+        
+        void rotate();            
     private:
-        int _num;
+        std::string _value;
     };
 }
 #endif /* PROOF_H */

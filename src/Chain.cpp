@@ -10,7 +10,7 @@
 using namespace BlockChain;
 
 Chain::Chain() {
-    newBlock(Proof(1), "1");
+    //newBlock?
 }
 
 Chain::~Chain() {
@@ -41,4 +41,8 @@ bool Chain::validate() const {
 bool Chain::validateProof(const Proof& lastProof, const Proof& proof) const {
     ///?
     return true;
+}
+
+const Block& Chain::newBlock(const Record& record) {
+    
 }
