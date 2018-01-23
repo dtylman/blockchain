@@ -31,7 +31,7 @@
 
 int BlockChainApp::main(const std::vector<std::string>& args) {
     BlockChain::Proof p;
-    p.findNext();
+    p.findNext();    
     Poco::Net::HTTPServer server(new BlockChain::HandlerFactory(), 5080);
     server.start();
     logger().information("Server started...");

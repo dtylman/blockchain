@@ -25,6 +25,7 @@
 #ifndef PROOF_H
 #define PROOF_H
 
+#include "Poco/Types.h"
 #include <string>
 
 namespace BlockChain {
@@ -40,7 +41,7 @@ namespace BlockChain {
         
         void rotate();            
     private:
-        std::string _value;
+        Poco::UInt64 _value;
     };
 }
 #endif /* PROOF_H */

@@ -23,25 +23,23 @@
  */
 
 #include "Hash.h"
-
+#include <iostream>
 using namespace BlockChain;
 
 #define PASSPHRASE "secret"
 
-Hash::Hash() : _engine(PASSPHRASE) {
-
+Hash::Hash() : _engine(PASSPHRASE) {    
 }
 
-const std::string& Hash::digest(const std::string& data) {
+const std::string& Hash::digest(const std::string& data) {        
     _engine.reset();
-    _engine.update(data);
-    _engine.digest();
+    _engine.update(data);    
     _hash = _engine.digestToHex(_engine.digest());
     return _hash;
     
 }
 
-bool Hash::endsWith(const std::string& suffix) const {
+bool Hash::endsWith(const std::string& suffix) const {    
     if (suffix.size()>_hash.size()){
         return false;
     }

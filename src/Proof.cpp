@@ -28,39 +28,37 @@
 #include "Poco/RandomStream.h"
 
 #include "Hash.h"
+#include "Poco/NumberFormatter.h"
 
 using namespace BlockChain;
 
-#define HASH_SUFFIX "00"
+#define HASH_SUFFIX "0000"
 #define VALUE_SIZE 100
 
-Proof::Proof() {
-    rotate();
+Proof::Proof() :_value(0){
+    
 }
 
 Proof::~Proof() {
 }
 
 bool Proof::valid(const Proof& prevProof) {
-    Hash h;
-    h.digest(_value + prevProof._value);
+    Hash h;                
+    h.digest(Poco::NumberFormatter::format(_value)+Poco::NumberFormatter::format(prevProof._value));
     return h.endsWith(HASH_SUFFIX);
 }
 
 void Proof::rotate() {
-    Poco::RandomInputStream ris;
-    char v[VALUE_SIZE];
-    ris.read(v, VALUE_SIZE);
-    _value.assign(v, VALUE_SIZE);
+    _value++;
 }
 
 Proof Proof::findNext() const {
     Proof p;
-    Hash h;
-    h.digest(p._value + _value);
+    Hash h;        
+    h.digest(Poco::NumberFormatter::format(p._value)+Poco::NumberFormatter::format(_value));
     while (!h.endsWith(HASH_SUFFIX)) {
         p.rotate();
-        h.digest(p._value + _value);
+        h.digest(Poco::NumberFormatter::format(p._value)+Poco::NumberFormatter::format(_value));
     }
     return p;
 }
