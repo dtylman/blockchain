@@ -26,6 +26,8 @@
 #define PROOF_H
 
 #include "Poco/Types.h"
+#include "Poco/JSON/Object.h"
+
 #include <string>
 
 namespace BlockChain {
@@ -42,6 +44,8 @@ namespace BlockChain {
         void rotate();            
         
         const Poco::UInt64& value() const;
+        
+        Poco::JSON::Object::Ptr toJSON() const;
     private:
         Poco::UInt64 _value;
     };

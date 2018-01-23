@@ -27,11 +27,18 @@
 #include "Poco/Net/HTTPServer.h"
 #include "HandlerFactory.h"
 #include "Proof.h"
+#include "Record.h"
 #include <iostream>
 
 int BlockChainApp::main(const std::vector<std::string>& args) {
-    BlockChain::Proof p;
-    p.findNext();    
+    BlockChain::Chain c;
+    BlockChain::Record r;
+    r.append("danny");
+    c.newBlock(r);
+    r.append(("tylman"));
+    c.newBlock(r);
+    Poco::JSON::Stringifier::stringify(*c.toJSON(),std::cout);
+    std::cout << std::endl;
     Poco::Net::HTTPServer server(new BlockChain::HandlerFactory(), 5080);
     server.start();
     logger().information("Server started...");

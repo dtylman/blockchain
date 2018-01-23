@@ -66,3 +66,9 @@ Proof Proof::findNext() const {
 const Poco::UInt64& Proof::value() const {
     return _value;
 }
+
+Poco::JSON::Object::Ptr Proof::toJSON() const {
+    Poco::JSON::Object::Ptr json = new Poco::JSON::Object();
+    json->set("value",_value);
+    return json;
+}

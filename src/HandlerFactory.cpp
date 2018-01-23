@@ -39,8 +39,7 @@ Poco::Net::HTTPRequestHandler* HandlerFactory::createRequestHandler(const Poco::
 
 void HandlerFactory::handleRequest(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response) {
     response.setChunkedTransferEncoding(true);
-	response.setContentType("text/html");
-
+	response.setContentType("application/json");
 	Poco::DateTime now;
 	std::string timeString(Poco::DateTimeFormatter::format(now, Poco::DateTimeFormat::SORTABLE_FORMAT));
 

@@ -40,3 +40,9 @@ void Record::append(const std::string& data) {
 const std::string& Record::data() const {
     return _data;
 }
+
+Poco::JSON::Object::Ptr Record::toJSON() const {
+    Poco::JSON::Object::Ptr json = new Poco::JSON::Object();
+    json->set("data",_data);
+    return json;
+}

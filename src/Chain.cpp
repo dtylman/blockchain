@@ -10,7 +10,7 @@
 using namespace BlockChain;
 
 Chain::Chain() {
-    newBlock(Record());
+    _chain.push_back(Block::Genesis);
 }
 
 Chain::~Chain() {
@@ -36,7 +36,7 @@ bool Chain::validate() const {
     return true;
 }
 
-const Block& Chain::newBlock(const Record& record) {
+const Block& Chain::newBlock(const Record& record) {    
     const Block& prev = lastBlock();
     Block b(_chain.size(),prev.proof().findNext(),record,prev.hash());
     _chain.push_back(b);
@@ -45,4 +45,12 @@ const Block& Chain::newBlock(const Record& record) {
 
 const Block& Chain::lastBlock() const {    
     return _chain[_chain.size()-1];
+}
+
+Poco::JSON::Array::Ptr Chain::toJSON() const {
+    Poco::JSON::Array::Ptr json = new Poco::JSON::Array();
+    for (auto block : _chain){
+        json->add(block.toJSON());
+    }
+    return json;
 }

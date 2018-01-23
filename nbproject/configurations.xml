@@ -35,18 +35,28 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <flagsDictionary>
-        <element flagsID="0"
-                 commonFlags="-mtune=generic -march=x86-64 -std=c++11 -fstack-protector-strong"/>
-        <element flagsID="1" commonFlags="-std=c++11"/>
+        <element flagsID="0" commonFlags="-std=c++11"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <buildCommand>${MAKE} -f Makefile -j 4</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath>bin/blockchain</executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
+              <pElem>../../.conan/data/OpenSSL/1.0.2l/conan/stable/package/93a39911b86ec3005dfe8be5be3b85a2792590e2/include</pElem>
+              <pElem>../../.conan/data/zlib/1.2.11/conan/stable/package/500a5737cfb7bee13d4a0039e72446892ca242ab/include</pElem>
+              <pElem>include</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>POCO_NO_AUTOMATIC_LIBS</Elem>
+              <Elem>POCO_STATIC=ON</Elem>
+            </preprocessorList>
+          </ccTool>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
@@ -54,93 +64,35 @@
         </preBuild>
       </makefileType>
       <item path="BlockChainApp.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="1">
-          <incDir>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
-            <pElem>../../.conan/data/OpenSSL/1.0.2l/conan/stable/package/93a39911b86ec3005dfe8be5be3b85a2792590e2/include</pElem>
-            <pElem>../../.conan/data/zlib/1.2.11/conan/stable/package/500a5737cfb7bee13d4a0039e72446892ca242ab/include</pElem>
-            <pElem>include</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>POCO_NO_AUTOMATIC_LIBS</Elem>
-            <Elem>POCO_STATIC=ON</Elem>
-          </preprocessorList>
+        <ccTool flags="0">
         </ccTool>
       </item>
       <item path="src/Block.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="1">
-          <incDir>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
-            <pElem>../../.conan/data/OpenSSL/1.0.2l/conan/stable/package/93a39911b86ec3005dfe8be5be3b85a2792590e2/include</pElem>
-            <pElem>../../.conan/data/zlib/1.2.11/conan/stable/package/500a5737cfb7bee13d4a0039e72446892ca242ab/include</pElem>
-            <pElem>include</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>POCO_NO_AUTOMATIC_LIBS</Elem>
-            <Elem>POCO_STATIC=ON</Elem>
-          </preprocessorList>
+        <ccTool flags="0">
         </ccTool>
       </item>
       <item path="src/Chain.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="1">
-          <incDir>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
-            <pElem>../../.conan/data/OpenSSL/1.0.2l/conan/stable/package/93a39911b86ec3005dfe8be5be3b85a2792590e2/include</pElem>
-            <pElem>../../.conan/data/zlib/1.2.11/conan/stable/package/500a5737cfb7bee13d4a0039e72446892ca242ab/include</pElem>
-            <pElem>include</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>POCO_NO_AUTOMATIC_LIBS</Elem>
-            <Elem>POCO_STATIC=ON</Elem>
-          </preprocessorList>
+        <ccTool flags="0">
         </ccTool>
       </item>
       <item path="src/HandlerFactory.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
-          <incDir>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include/Poco/Net</pElem>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include/Poco</pElem>
-            <pElem>src</pElem>
-            <pElem>include</pElem>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
-          </incDir>
         </ccTool>
       </item>
       <item path="src/Hash.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
-          <incDir>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include/Poco</pElem>
-            <pElem>src</pElem>
-            <pElem>include</pElem>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
-          </incDir>
         </ccTool>
       </item>
       <item path="src/Node.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
-          <incDir>
-            <pElem>src</pElem>
-            <pElem>include</pElem>
-          </incDir>
         </ccTool>
       </item>
       <item path="src/Proof.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
-          <incDir>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include/Poco</pElem>
-            <pElem>src</pElem>
-            <pElem>include</pElem>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include</pElem>
-          </incDir>
         </ccTool>
       </item>
       <item path="src/Record.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
-          <incDir>
-            <pElem>src</pElem>
-            <pElem>../../.conan/data/Poco/1.8.0.1/pocoproject/stable/package/7c9797ab6aa20aea181fc0ad267f019103890aa9/include/Poco</pElem>
-            <pElem>include</pElem>
-          </incDir>
         </ccTool>
       </item>
     </conf>

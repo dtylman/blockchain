@@ -15,6 +15,7 @@
 
 #include "Poco/Timestamp.h"
 #include "Poco/Types.h"
+#include "Poco/JSON/Object.h"
 
 #include <string>
 
@@ -22,7 +23,8 @@ namespace BlockChain {
 
     class Block {
     public:
-        Block(Poco::UInt32 index, const Proof& proof, const Record& record, std::string previous_hash);
+        static Block Genesis;
+        Block(Poco::UInt32 index, const Proof& proof, const Record& record, const std::string& previous_hash);
         virtual ~Block();        
         
         Poco::UInt32 index() const;
@@ -30,8 +32,8 @@ namespace BlockChain {
         std::string hash() const;
         const Record& record() const;     
         const Proof& proof() const;
-        
-        std::string toString() const;
+                
+        Poco::JSON::Object::Ptr toJSON() const;
     private:                        
         Poco::UInt32 _index;        
         Poco::Timestamp _time;

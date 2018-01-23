@@ -11,6 +11,7 @@
 #include "Block.h"
 #include "Record.h"
 #include "Node.h"
+#include "Poco/JSON/Object.h"
 
 #include <vector>
 
@@ -27,6 +28,7 @@ public:
     
     bool validate() const;
 
+    Poco::JSON::Array::Ptr toJSON() const;
 private:    
     const Block& lastBlock() const;
     List _chain;

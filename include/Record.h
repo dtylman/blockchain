@@ -28,6 +28,8 @@
 #include <vector>
 #include <string>
 #include "Poco/Types.h"
+#include "Poco/JSON/Object.h"
+
 
 namespace BlockChain {
 
@@ -37,6 +39,8 @@ namespace BlockChain {
         virtual ~Record();        
         void append(const std::string& data);
         const std::string& data() const;
+        
+        Poco::JSON::Object::Ptr toJSON() const;
     private:
         std::string _data;
     };
