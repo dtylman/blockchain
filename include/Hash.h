@@ -27,7 +27,10 @@
 
 #include "Poco/HMACEngine.h"
 #include "Poco/SHA1Engine.h"
-
+#include "Poco/Timestamp.h"
+#include "Poco/Types.h"
+#include "Record.h"
+#include "Proof.h"
 #include <string> 
 
 namespace BlockChain {
@@ -35,9 +38,16 @@ namespace BlockChain {
     class Hash {
     public:
         Hash();
+        const std::string& digest();
         const std::string& digest(const std::string& data);
         
         bool endsWith(const std::string& suffix) const;
+        
+        void update(const std::string& data);
+        void update(Poco::UInt32 data);
+        void update(const Poco::Timestamp::TimeVal& data);
+        void update(const Record& record);
+        void update(const Proof& proof);
     private:
         Poco::HMACEngine<Poco::SHA1Engine> _engine;
         std::string _hash;

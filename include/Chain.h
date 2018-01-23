@@ -26,9 +26,9 @@ public:
     const Block& newBlock(const Record& record);    
     
     bool validate() const;
-protected:
-    bool validateProof(const Proof& lastProof, const Proof& proof) const;
-private:
+
+private:    
+    const Block& lastBlock() const;
     List _chain;
     Node::List _nodes;
 };

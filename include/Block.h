@@ -25,13 +25,16 @@ namespace BlockChain {
         Block(Poco::UInt32 index, const Proof& proof, const Record& record, std::string previous_hash);
         virtual ~Block();        
         
-        int index() const;
+        Poco::UInt32 index() const;
         const std::string& prevHash() const;
+        std::string hash() const;
+        const Record& record() const;     
+        const Proof& proof() const;
         
-        const Record& record() const;
-    private:
-        Poco::UInt32 _index;
-        Poco::Timestamp _timestamp;
+        std::string toString() const;
+    private:                        
+        Poco::UInt32 _index;        
+        Poco::Timestamp _time;
         Proof _proof;
         Record _record;
         std::string _previous_hash;

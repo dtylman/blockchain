@@ -35,10 +35,9 @@ namespace BlockChain {
     public:         
         Record();
         virtual ~Record();        
-        const std::string& hash() const;
         void append(const std::string& data);
+        const std::string& data() const;
     private:
-        std::string _hash;
         std::string _data;
     };
 }

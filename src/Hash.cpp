@@ -28,20 +28,43 @@ using namespace BlockChain;
 
 #define PASSPHRASE "secret"
 
-Hash::Hash() : _engine(PASSPHRASE) {    
+Hash::Hash() : _engine(PASSPHRASE) {
 }
 
-const std::string& Hash::digest(const std::string& data) {        
-    _engine.reset();
-    _engine.update(data);    
+const std::string& Hash::digest(){
     _hash = _engine.digestToHex(_engine.digest());
     return _hash;
-    
 }
 
-bool Hash::endsWith(const std::string& suffix) const {    
-    if (suffix.size()>_hash.size()){
+const std::string& Hash::digest(const std::string& data) {
+    _engine.reset();
+    _engine.update(data);
+    return digest();
+}
+
+bool Hash::endsWith(const std::string& suffix) const {
+    if (suffix.size() > _hash.size()) {
         return false;
     }
-    return std::equal(suffix.rbegin(),suffix.rend(),_hash.rbegin());
+    return std::equal(suffix.rbegin(), suffix.rend(), _hash.rbegin());
+}
+
+void Hash::update(const std::string& data) {
+    _engine.update(data);
+}
+
+void Hash::update(Poco::UInt32 data) {
+    _engine.update(&data,sizeof(Poco::UInt32));
+}
+
+void Hash::update(const Poco::Timestamp::TimeVal& data) {
+    _engine.update(&data,sizeof(Poco::Timestamp::TimeVal));
+}
+
+void Hash::update(const Record& record) {
+    _engine.update(record.data());
+}
+
+void Hash::update(const Proof& proof){
+    _engine.update(proof.value());
 }

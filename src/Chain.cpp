@@ -10,7 +10,7 @@
 using namespace BlockChain;
 
 Chain::Chain() {
-    //newBlock?
+    newBlock(Record());
 }
 
 Chain::~Chain() {
@@ -24,25 +24,25 @@ bool Chain::validate() const {
     while (iter != _chain.begin()) {
         const Block& nextBlock = *iter;
         iter--;
-        if (iter->record().hash() != nextBlock.prevHash()) {
+        if (iter->hash() != nextBlock.prevHash()) {
             return false;
         }
         
+        if (!nextBlock.proof().valid(iter->proof())){
+            return false;
+        }
         
-        /*
-          # Check that the Proof of Work is correct
-        if not self.valid_proof(last_block['proof'], block['proof']):
-        return False*/
-
     }
     return true;
 }
 
-bool Chain::validateProof(const Proof& lastProof, const Proof& proof) const {
-    ///?
-    return true;
+const Block& Chain::newBlock(const Record& record) {
+    const Block& prev = lastBlock();
+    Block b(_chain.size(),prev.proof().findNext(),record,prev.hash());
+    _chain.push_back(b);
+    return lastBlock();
 }
 
-const Block& Chain::newBlock(const Record& record) {
-    
+const Block& Chain::lastBlock() const {    
+    return _chain[_chain.size()-1];
 }

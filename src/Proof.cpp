@@ -42,7 +42,7 @@ Proof::Proof() :_value(0){
 Proof::~Proof() {
 }
 
-bool Proof::valid(const Proof& prevProof) {
+bool Proof::valid(const Proof& prevProof) const {
     Hash h;                
     h.digest(Poco::NumberFormatter::format(_value)+Poco::NumberFormatter::format(prevProof._value));
     return h.endsWith(HASH_SUFFIX);
@@ -61,4 +61,8 @@ Proof Proof::findNext() const {
         h.digest(Poco::NumberFormatter::format(p._value)+Poco::NumberFormatter::format(_value));
     }
     return p;
+}
+
+const Poco::UInt64& Proof::value() const {
+    return _value;
 }

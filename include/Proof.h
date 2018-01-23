@@ -35,11 +35,13 @@ namespace BlockChain {
         Proof();
         virtual ~Proof();
                       
-        bool valid(const Proof& prevProof);
+        bool valid(const Proof& prevProof) const;
         
         Proof findNext() const;
         
         void rotate();            
+        
+        const Poco::UInt64& value() const;
     private:
         Poco::UInt64 _value;
     };

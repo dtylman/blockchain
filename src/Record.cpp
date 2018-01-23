@@ -33,11 +33,10 @@ Record::Record() {
 Record::~Record() {
 }
 
-const std::string& Record::hash() const {
-    return _hash;
-}
-
 void Record::append(const std::string& data) {
     _data.append(data);
-    _hash = Hash().digest(_data);
+}
+
+const std::string& Record::data() const {
+    return _data;
 }
